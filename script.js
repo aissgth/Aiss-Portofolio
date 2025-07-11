@@ -3,14 +3,12 @@ window.addEventListener("load", () => {
   const mainContent = document.querySelector(".main-content");
   const loadingText = document.getElementById("loading-text");
 
-  // Loading dots animation
   let dots = 0;
   const dotInterval = setInterval(() => {
     dots = (dots + 1) % 4;
     loadingText.textContent = "Loading" + ".".repeat(dots);
   }, 500);
 
-  // Setelah loading selesai
   setTimeout(() => {
     clearInterval(dotInterval);
     loading.style.display = "none";
@@ -19,7 +17,6 @@ window.addEventListener("load", () => {
     hitungPengunjung();
   }, 3000);
 
-  // Typing Effect
   const roles = [
     "Welcome Sobat Coding",
     "Di Website",
@@ -31,16 +28,14 @@ window.addEventListener("load", () => {
     "Dan Banyak Lagi"
   ];
   const nameElement = document.getElementById("dynamic-name");
-  let roleIndex = 0;
-  let charIndex = 0;
-  let typingForward = true;
+  let roleIndex = 0, charIndex = 0, typingForward = true;
 
   function startTyping() {
     setInterval(() => {
       const currentText = roles[roleIndex];
       if (typingForward) {
         charIndex++;
-        if (charIndex === currentText.length + 1) typingForward = false;
+        if (charIndex > currentText.length) typingForward = false;
       } else {
         charIndex--;
         if (charIndex === 0) {
@@ -52,21 +47,17 @@ window.addEventListener("load", () => {
     }, 100);
   }
 
-  // Hitung Pengunjung Firestore
   async function hitungPengunjung() {
-    const pengunjungRef = db.collection("pengunjung").doc("total");
     try {
+      const pengunjungRef = db.collection("pengunjung").doc("total");
       const doc = await pengunjungRef.get();
-      if (doc.exists) {
-        const count = doc.data().count + 1;
-        await pengunjungRef.set({ count });
-        document.getElementById("visitor-count").textContent = `👀 Total Pengunjung: ${count}`;
-      } else {
-        await pengunjungRef.set({ count: 1 });
-        document.getElementById("visitor-count").textContent = `👀 Total Pengunjung: 1`;
-      }
-    } catch (err) {
-      console.error("Gagal hitung pengunjung:", err);
+      let count = doc.exists ? doc.data().count || 0 : 0;
+      count++;
+      await pengunjungRef.set({ count });
+      document.getElementById("visitor-count").textContent = `👀 Total Pengunjung: ${count}`;
+    } catch (e) {
+      document.getElementById("visitor-count").textContent = `👀 Total Pengunjung: Gagal`;
+      console.error("Error:", e);
     }
   }
 });

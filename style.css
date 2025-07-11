@@ -1,132 +1,92 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', sans-serif;
-}
 body {
-  background-color: #0f0f0f;
-  color: #ffffff;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #000;
+  color: #fff;
   text-align: center;
-  padding: 20px;
 }
-
-/* Loading Screen */
 #loading-screen {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   background: #000;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  z-index: 9999;
-}
-.logo-container {
-  display: flex;
-  gap: 30px;
-  margin-bottom: 20px;
+  align-items: center;
 }
 .logo-container img {
-  width: 60px;
-  height: 60px;
-  object-fit: contain;
-  border-radius: 12px;
-  box-shadow: 0 0 15px #00ffff;
+  width: 80px;
+  margin: 10px;
 }
 #loading-text {
-  font-size: 1.4em;
-  color: #00ccff;
-  margin-bottom: 20px;
+  font-size: 24px;
+  margin-top: 10px;
+  color: #00ff88;
 }
 .progress-bar {
-  width: 300px;
-  height: 10px;
-  background: #111;
+  width: 80%;
+  background: #333;
   border-radius: 20px;
+  margin-top: 20px;
   overflow: hidden;
-  box-shadow: 0 0 10px #00ccff;
 }
-.progress-bar .bar {
-  width: 0%;
-  height: 100%;
-  background: linear-gradient(90deg, #00ccff, #00ffff);
-  animation: loadbar 3s ease-out forwards;
+.bar {
+  height: 10px;
+  width: 100%;
+  background: linear-gradient(to right, #00ff88, #00ffaa);
+  animation: progressAnim 3s linear;
 }
-@keyframes loadbar {
-  0% { width: 0%; }
-  100% { width: 100%; }
+@keyframes progressAnim {
+  from { width: 0%; }
+  to { width: 100%; }
 }
-
-/* Main Content */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-#dynamic-name {
-  font-size: 2em;
+.main-content h1 {
+  font-size: 32px;
   color: #00ff88;
   text-shadow: 0 0 10px #00ff88;
-  transition: all 0.5s ease-in-out;
-  white-space: nowrap;
-  overflow: hidden;
 }
-.icons a {
-  font-size: 30px;
-  color: #00ff88;
-  text-decoration: none;
-  margin-left: 10px;
-  transition: transform 0.3s ease;
+.skill .bar div {
+  height: 8px;
+  background: #00ff88;
+  border-radius: 20px;
 }
-.icons a:hover {
-  transform: scale(1.2);
-}
-section {
-  margin: 40px 0;
-}
-ul {
-  list-style: none;
-}
-footer {
-  margin-top: 40px;
-  font-size: 0.9em;
-  color: #888;
-}
-
-/* Skills */
-.skills .skill {
+.bar {
+  background: #333;
+  border-radius: 20px;
   margin: 10px auto;
   width: 80%;
-  text-align: left;
 }
-.skills .bar {
-  background: #333;
-  height: 10px;
-  border-radius: 10px;
-  margin-top: 5px;
-  overflow: hidden;
-}
-.skills .bar div {
-  height: 100%;
-  background: #00ff88;
-  box-shadow: 0 0 8px #00ff88;
-}
-
-/* WhatsApp Button */
 .btn-wa {
   display: inline-block;
-  background: #25d366;
-  color: white;
   padding: 10px 20px;
+  background: #00ff88;
+  color: #000;
   border-radius: 30px;
+  font-weight: bold;
   text-decoration: none;
-  box-shadow: 0 0 10px #25d366;
-  transition: background 0.3s ease;
+  margin-top: 10px;
+  box-shadow: 0 0 10px #00ff88;
 }
-.btn-wa:hover {
-  background: #1ebc59;
+
+.progress-bar {
+  width: 200px;
+  height: 8px;
+  background: #222;
+  border-radius: 10px;
+  margin-top: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 10px #00ff88;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: #00ff88;
+  animation: progressFill 3s forwards;
+}
+
+@keyframes progressFill {
+  from { width: 0%; }
+  to { width: 100%; }
 }
