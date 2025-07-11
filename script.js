@@ -1,22 +1,19 @@
+// Pastikan ini dijalankan setelah Firebase dan Firestore sudah di-load
+
 window.addEventListener("load", () => {
   const loading = document.getElementById("loading-screen");
   const mainContent = document.querySelector(".main-content");
   const loadingText = document.getElementById("loading-text");
+  const nameElement = document.getElementById("dynamic-name");
+  const visitorCount = document.getElementById("visitor-count");
 
   let dots = 0;
   const dotInterval = setInterval(() => {
     dots = (dots + 1) % 4;
     loadingText.textContent = "Loading" + ".".repeat(dots);
-  }, 500);
+  }, 400);
 
-  setTimeout(() => {
-    clearInterval(dotInterval);
-    loading.style.display = "none";
-    mainContent.style.display = "block";
-    startTyping();
-    hitungPengunjung();
-  }, 3000);
-
+  // List teks animasi di header
   const roles = [
     "Welcome Sobat Coding",
     "Di Website",
@@ -27,7 +24,6 @@ window.addEventListener("load", () => {
     "Website",
     "Dan Banyak Lagi"
   ];
-  const nameElement = document.getElementById("dynamic-name");
   let roleIndex = 0, charIndex = 0, typingForward = true;
 
   function startTyping() {
@@ -49,15 +45,24 @@ window.addEventListener("load", () => {
 
   async function hitungPengunjung() {
     try {
-      const pengunjungRef = db.collection("pengunjung").doc("total");
+      const pengunjungRef = firebase.firestore().collection("pengunjung").doc("total");
       const doc = await pengunjungRef.get();
-      let count = doc.exists ? doc.data().count || 0 : 0;
+      let count = doc.exists ? (doc.data().count || 0) : 0;
       count++;
       await pengunjungRef.set({ count });
-      document.getElementById("visitor-count").textContent = `👀 Total Pengunjung: ${count}`;
+      visitorCount.textContent = `👀 Total Pengunjung: ${count}`;
     } catch (e) {
-      document.getElementById("visitor-count").textContent = `👀 Total Pengunjung: Gagal`;
-      console.error("Error:", e);
+      visitorCount.textContent = `👀 Total Pengunjung: Gagal`;
+      console.error("Gagal mengambil data:", e);
     }
   }
+
+  // Setelah loading selesai
+  setTimeout(() => {
+    clearInterval(dotInterval);
+    loading.style.display = "none";
+    mainContent.style.display = "block";
+    startTyping();
+    hitungPengunjung();
+  }, 3000);
 });
