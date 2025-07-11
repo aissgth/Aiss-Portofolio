@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portofolio Aiss</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="logo.png" />
+  <script defer src="script.js"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js"></script>
+  <!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js"></script>
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyDBZlvFPP1utbgwHUKP3YUgjp3T4EMCcKY",
+    authDomain: "databasewebsite-cc365.firebaseapp.com",
+    projectId: "databasewebsite-cc365",
+    storageBucket: "databasewebsite-cc365.firebasestorage.app",
+    messagingSenderId: "215364125022",
+    appId: "1:215364125022:web:a45d9c1cce0395e4050fcf",
+    measurementId: "G-Y1M7P2MCPT"
+  };
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+</script>
+</head>
+<body>
+  <!-- Loading Screen -->
+  <div id="loading-screen">
+    <div class="logo-container">
+      <img src="https://play-lh.googleusercontent.com/Xn_nzgSnE5xBI0q72OiHHdY5PM7ti2i37B2Z-PgH9W7yGOKzKd2T_zFlHwV1CrxG9RYP=w240-h480-rw" alt="Termux" />
+      <img src="https://acode.foxdebug.com/images/logo.png" alt="Acode" />
+    </div>
+    <p id="loading-text">Loading</p>
+    <div class="progress-bar"><div class="bar"></div></div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content" style="display: none;">
+    <header>
+      <h1 id="dynamic-name">Welcome Sobat Coding|</h1>
+      <div class="icons">
+        <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
+      </div>
+    </header>
+
+    <section class="about">
+      <h2>👋 Tentang Saya</h2>
+      <p>Saya developer yang suka ngoding di HP menggunakan Acode & Termux. Selamat datang di portofolio saya!</p>
+    </section>
+
+    <section class="skills">
+      <h2>🧠 Keahlian</h2>
+      <div class="skill">
+        <p>HTML</p>
+        <div class="bar"><div style="width: 90%"></div></div>
+      </div>
+      <div class="skill">
+        <p>JavaScript</p>
+        <div class="bar"><div style="width: 85%"></div></div>
+      </div>
+      <div class="skill">
+        <p>Firebase</p>
+        <div class="bar"><div style="width: 80%"></div></div>
+      </div>
+    </section>
+
+    <section class="projects">
+      <h2>🚀 Proyek Saya</h2>
+      <ul>
+        <li>⚙️ Bot WhatsApp Custom</li>
+        <li>🌐 Website Game Neon Style</li>
+        <li>🔐 Sistem Autentikasi Firebase</li>
+      </ul>
+    </section>
+
+    <section class="contact">
+      <h2>📞 Kontak</h2>
+      <a href="https://wa.me/6287831914759" class="btn-wa" target="_blank">Chat via WhatsApp</a>
+    </section>
+
+    <footer>
+      <p id="visitor-count">👀 Total Pengunjung: ...</p>
+      <p>© 2025 Aiss Dev | Dibuat dengan Tekun Dan Percaya Diri</p>
+    </footer>
+  </div>
+</body>
+</html>
